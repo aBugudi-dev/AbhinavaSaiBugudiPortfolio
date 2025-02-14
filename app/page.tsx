@@ -2,11 +2,11 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Route, Routes, Link, useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Sun, Moon, Github, Linkedin, Mail, Download, Menu, X } from "lucide-react";
+import { Sun, Moon, Github, Linkedin, Mail, Menu, X } from "lucide-react";
 
 import { useNavigate } from "react-router-dom";
 
-function Navbar({ darkMode, setDarkMode }: { darkMode: boolean; setDarkMode: React.Dispatch<React.SetStateAction<boolean>> }) {
+function Navbar({ darkMode}: { darkMode: boolean; setDarkMode: React.Dispatch<React.SetStateAction<boolean>> }) {
   const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate(); // FIX: Enables forced navigation
 
