@@ -139,9 +139,9 @@ export default function Portfolio() {
         <h2 className="text-4xl font-semibold mb-4">Projects</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {[
-            { name: "Voxscribe", desc: "AI handwriting recognition app.", github: "https://github.com/yourgithub/voxscribe" },
-            { name: "Taxi Robot Open AI, Next step orediction", desc: "Using a Neural Network model to predict the next best efficient step for a taxi to pickup a passenger", github: "https://github.com/yourgithub/housing-price-prediction" },
-            { name: "Android Country Guessing Game", desc: "A Kotlin-based mobile quiz game.", github: "https://github.com/yourgithub/country-quiz" },
+            { name: "Voxscribe", desc: "AI handwriting recognition app.", github: "https://github.com/AbhinavBugudi69/Voxscribe" },
+            { name: "Taxi Robot Open AI, Next step orediction", desc: "Using a Neural Network model to predict the next best efficient step for a taxi to pickup a passenger", github: "https://github.com/AbhinavBugudi69/Taxi-robot-Machine-learning-path-finding" },
+            { name: "Android Country Guessing Game", desc: "A Kotlin-based mobile quiz game.", github: "https://github.com/AbhinavBugudi69/Android-Country-guessing-game@" },
           ].map((project, index) => (
             <motion.div key={index} whileHover={{ scale: 1.05 }} className={`p-6 rounded-lg shadow-lg backdrop-blur-md ${darkMode ? "bg-gray-800/80 text-white" : "bg-gray-100/90 text-black"}`}>
               <h3 className="text-xl font-bold">{project.name}</h3>
