@@ -121,7 +121,15 @@ export default function Portfolio() {
         <motion.div  whileHover={{ scale: 1.05 }} className={`p-6 rounded-lg shadow-lg backdrop-blur-md ${darkMode ? "bg-gray-800/80 text-white" : "bg-gray-100/90 text-black"}`}>
           <h2 className="text-4xl font-semibold mb-4">Summary</h2>
           <p className="text-lg">
-            Passionate software engineer with experience in machine learning, backend development, and mobile app development. Proficient in Python, Java, Kotlin, and various frameworks such as Django and Jetpack Compose. Experienced in building AI-powered applications, real-world predictive models, and full-stack solutions.
+          Results-driven Software Engineering graduate with expertise in
+            Python, Java, Kotlin, and Machine Learning. Developed Voxscribe,
+            an AI-powered handwriting recognition app, and implemented ML
+            models for currency recognition and housing price prediction.
+            Proficient in Android development (Jetpack Compose), backend
+            systems (Django, Flask), and data-driven applications. Strong
+            problem-solving skills with experience in software design, algorithms,
+            and scalable solutions. Passionate about AI, mobile development,
+            and creating innovative tech solutions. Experienced in building AI-powered applications, real-world predictive models, and full-stack solutions.
           </p>
         </motion.div>
       </section>
@@ -132,7 +140,7 @@ export default function Portfolio() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {[
             { name: "Voxscribe", desc: "AI handwriting recognition app.", github: "https://github.com/yourgithub/voxscribe" },
-            { name: "Housing Price Prediction", desc: "ML model predicting real estate prices.", github: "https://github.com/yourgithub/housing-price-prediction" },
+            { name: "Taxi Robot Open AI, Next step orediction", desc: "Using a Neural Network model to predict the next best efficient step for a taxi to pickup a passenger", github: "https://github.com/yourgithub/housing-price-prediction" },
             { name: "Android Country Guessing Game", desc: "A Kotlin-based mobile quiz game.", github: "https://github.com/yourgithub/country-quiz" },
           ].map((project, index) => (
             <motion.div key={index} whileHover={{ scale: 1.05 }} className={`p-6 rounded-lg shadow-lg backdrop-blur-md ${darkMode ? "bg-gray-800/80 text-white" : "bg-gray-100/90 text-black"}`}>
@@ -148,14 +156,15 @@ export default function Portfolio() {
       <section id="education" className="container mx-auto px-6 py-20">
         <motion.div  whileHover={{ scale: 1.05 }}className={`p-6 rounded-lg shadow-lg backdrop-blur-md ${darkMode ? "bg-gray-800/80 text-white" : "bg-gray-100/90 text-black"}`}>
           <h2 className="text-4xl font-semibold mb-4">Education</h2>
-          <p className="text-lg">BSc Software Engineering, University of Westminster</p>
-          <p className="text-md text-gray-400 italic mt-1">September 2020 - June 2024</p>
+          <p className="text-lg">BSc Software Engineering, <b>University of Westminster</b>, London, United Kingdom</p>
+          <p className="text-md text-gray-400 italic mt-1">September 2022 - June 2025</p>
           <h3 className="text-xl font-semibold mt-4">Relevant Coursework</h3>
           <ul className="list-disc pl-6 mt-2 space-y-1">
             <li>Machine Learning & AI Development</li>
             <li>Software Architecture & Design</li>
             <li>Database Systems & Big Data Analytics</li>
             <li>Data Structures & Algorithms</li>
+            <li>Android kotlin Development</li>
           </ul>
         </motion.div>
       </section>
@@ -203,13 +212,13 @@ export default function Portfolio() {
         <h2 className="text-4xl font-semibold mb-4">Contact Me</h2>
         <p className="text-lg text-gray-400">Feel free to connect with me:</p>
         <div className="flex justify-center gap-6 mt-6">
-          <motion.a href="https://github.com/yourgithub"  whileHover={{ scale: 1.05 }} className="p-3 rounded-full transition-all bg-gray-800 text-white hover:bg-gray-700">
+          <motion.a href="https://github.com/AbhinavBugudi69"  whileHover={{ scale: 1.10 }} className="p-3 rounded-full transition-all bg-gray-800 text-white hover:bg-gray-700">
             <Github size={30} />
           </motion.a>
-          <motion.a href="https://linkedin.com/in/yourlinkedin" whileHover={{ scale: 1.05 }} className="p-3 rounded-full transition-all bg-blue-600 text-white hover:bg-blue-500">
+          <motion.a href="https://www.linkedin.com/in/bugudi-abhinava-sai/" whileHover={{ scale: 1.10 }} className="p-3 rounded-full transition-all bg-blue-600 text-white hover:bg-blue-500">
             <Linkedin size={30} />
           </motion.a>
-          <motion.a href="mailto:your.email@example.com"  whileHover={{ scale: 1.05 }} className="p-3 rounded-full transition-all bg-red-600 text-white hover:bg-red-500">
+          <motion.a href="mailto:abhinavasaibugudi@gmail.com"  whileHover={{ scale: 1.10 }} className="p-3 rounded-full transition-all bg-red-600 text-white hover:bg-red-500">
             <Mail size={30} />
           </motion.a>
         </div>
