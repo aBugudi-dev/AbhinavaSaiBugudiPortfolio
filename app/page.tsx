@@ -141,7 +141,7 @@ export default function Portfolio() {
           {[
             { name: "Voxscribe", desc: "AI handwriting recognition app.", github: "https://github.com/AbhinavBugudi69/Voxscribe" },
             { name: "Taxi Robot Open AI, Next step prediction", desc: "Using a Neural Network model to predict the next best efficient step for a taxi to pickup a passenger", github: "https://github.com/AbhinavBugudi69/Taxi-robot-Machine-learning-path-finding" },
-            { name: "Android Country Guessing Game", desc: "A Kotlin-based mobile quiz game.", github: "https://github.com/AbhinavBugudi69/Android-Country-guessing-game@" },
+            { name: "Android Country Guessing Game", desc: "A Kotlin-based mobile quiz game.", github: "https://github.com/AbhinavBugudi69/Android-Country-guessing-game" },
           ].map((project, index) => (
             <motion.div key={index} whileHover={{ scale: 1.05 }} className={`p-6 rounded-lg shadow-lg backdrop-blur-md ${darkMode ? "bg-gray-800/80 text-white" : "bg-gray-100/90 text-black"}`}>
               <h3 className="text-xl font-bold">{project.name}</h3>
