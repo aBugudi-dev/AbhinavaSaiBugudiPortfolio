@@ -7,7 +7,6 @@ export default function Portfolio() {
   const [darkMode, setDarkMode] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [cursorPos, setCursorPos] = useState({ x: 0, y: 0 });
-  const [ripples, setRipples] = useState<{ x: number; y: number; id: number }[]>([]);
 
   // ✅ Track cursor movement
   useEffect(() => {
@@ -46,18 +45,6 @@ export default function Portfolio() {
     }
   };
 
-
-   // ✅ Handle Click for Ripple Effect
-  const handleClick = (e: React.MouseEvent) => {
-    const newRipple = { x: e.clientX, y: e.clientY, id: Date.now() };
-    setRipples((prev) => [...prev, newRipple]);
-
-    // Remove the ripple after animation
-    setTimeout(() => {
-      setRipples((prev) => prev.filter((ripple) => ripple.id !== newRipple.id));
-    }, 600);
-  };
-
   return (
     <div className={darkMode ? "bg-gray-900 text-white min-h-screen" : "bg-gray-50 text-black min-h-screen"}>
 
@@ -71,18 +58,6 @@ export default function Portfolio() {
           className="w-64 h-64 bg-gradient-to-r from-blue-500 to-purple-600 opacity-30 rounded-full blur-3xl absolute"
         />
       </motion.div>
-
-      {/* ✅ Ripple Effect on Click */}
-      {ripples.map((ripple) => (
-        <motion.div
-          key={ripple.id}
-          className="absolute w-20 h-20 bg-white/30 rounded-full pointer-events-none"
-          style={{ top: ripple.y - 40, left: ripple.x - 40 }}
-          initial={{ scale: 0, opacity: 1 }}
-          animate={{ scale: 3, opacity: 0 }}
-          transition={{ duration: 0.6 }}
-        />
-      ))}
       
       {/* ✅ Navigation Bar */}
       {/* ✅ Updated Navigation Bar (With Summary & Work Experience) */}
