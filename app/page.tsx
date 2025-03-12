@@ -218,7 +218,7 @@ export default function Portfolio() {
           <motion.a href="https://www.linkedin.com/in/bugudi-abhinava-sai/" whileHover={{ scale: 1.10 }} className="p-3 rounded-full transition-all bg-blue-600 text-white hover:bg-blue-500">
             <Linkedin size={30} />
           </motion.a>
-          <motion.a href="mailto:abhinavasaibugudi@gmail.com"  whileHover={{ scale: 1.10 }} className="p-3 rounded-full transition-all bg-red-600 text-white hover:bg-red-500">
+          <motion.a href="mailto:abhinavasaibugudi04@gmail.com"  whileHover={{ scale: 1.10 }} className="p-3 rounded-full transition-all bg-red-600 text-white hover:bg-red-500">
             <Mail size={30} />
           </motion.a>
         </div>
