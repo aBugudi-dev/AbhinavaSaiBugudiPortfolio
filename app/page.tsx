@@ -212,7 +212,7 @@ export default function Portfolio() {
         <h2 className="text-4xl font-semibold mb-4">Contact Me</h2>
         <p className="text-lg text-gray-400">Feel free to connect with me:</p>
         <div className="flex justify-center gap-6 mt-6">
-          <motion.a href="https://github.com/AbhinavBugudi69"  whileHover={{ scale: 1.10 }} className="p-3 rounded-full transition-all bg-gray-800 text-white hover:bg-gray-700">
+          <motion.a href="https://github.com/AbhinavBugudi69?tab=repositories"  whileHover={{ scale: 1.10 }} className="p-3 rounded-full transition-all bg-gray-800 text-white hover:bg-gray-700">
             <Github size={30} />
           </motion.a>
           <motion.a href="https://www.linkedin.com/in/bugudi-abhinava-sai/" whileHover={{ scale: 1.10 }} className="p-3 rounded-full transition-all bg-blue-600 text-white hover:bg-blue-500">
