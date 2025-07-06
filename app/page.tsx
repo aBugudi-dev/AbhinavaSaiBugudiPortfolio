@@ -121,11 +121,11 @@ export default function Portfolio() {
       {/* Navigation Bar (Dynamic on Scroll) */}
       <motion.nav
         className="fixed top-0 left-0 w-full z-50 backdrop-blur-md transition-all duration-300"
-        style={{ height: headerHeight, y: headerY }} // Apply dynamic height and Y position
+        style={{ height: headerHeight, y: headerY }}
       >
         <motion.div
           className="relative h-full flex items-center justify-start px-6"
-          style={{ opacity: headerOpacity }} // Fade out content as it shrinks
+          style={{ opacity: headerOpacity }}
         >
           {/* Hamburger Menu Button */}
           <motion.button
@@ -197,7 +197,7 @@ export default function Portfolio() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: "easeOut" }}
         >
-          Hi, I’m Abhinava Bugudi
+          Hi, I&apos;m Abhinava Bugudi
         </motion.h1>
         <motion.h2
           className="text-3xl md:text-4xl font-semibold text-gray-700 dark:text-gray-300 mb-6 max-w-4xl"
@@ -231,10 +231,10 @@ export default function Portfolio() {
           <h2 className="text-4xl font-bold mb-6 text-center text-blue-500 dark:text-blue-400">About Me</h2>
           <div className="prose lg:prose-lg xl:prose-xl max-w-none dark:prose-invert">
             <p className="text-lg leading-relaxed mb-4">
-              I'm a final-year <strong className="text-blue-500 dark:text-blue-300">Software Engineering student</strong> at the University of Westminster, passionate about machine learning, NLP, and applied data science. My work spans fintech, robotics, healthcare, and education — combining research-backed development with hands-on engineering.
+              I&apos;m a final-year <strong className="text-blue-500 dark:text-blue-300">Software Engineering student</strong> at the University of Westminster, passionate about machine learning, NLP, and applied data science. My work spans fintech, robotics, healthcare, and education &mdash; combining research-backed development with hands-on engineering.
             </p>
             <p className="text-lg leading-relaxed">
-              I’ve built end-to-end platforms, contributed to recommendation systems, and deployed scalable AI systems across web and mobile environments. Whether I’m building a currency forecasting engine or solving a dynamic maze with reinforcement learning, I bring data, logic, and user empathy into everything I do.
+              I&apos;ve built end-to-end platforms, contributed to recommendation systems, and deployed scalable AI systems across web and mobile environments. Whether I&apos;m building a currency forecasting engine or solving a dynamic maze with reinforcement learning, I bring data, logic, and user empathy into everything I do.
             </p>
           </div>
         </motion.div>
@@ -262,7 +262,7 @@ export default function Portfolio() {
             {
               name: "Maze Taxi Pathfinder – Q-Learning Robotics Project",
               role: "Academic Project",
-              desc: "Trained a Q-learning agent to find optimal routes in a dynamic maze, simulating a smart taxi's navigation system. Designed reward matrices, implemented epsilon-greedy exploration, and visualized policies with heatmaps. Project reinforced my understanding of reinforcement learning in physical pathfinding scenarios.",
+              desc: "Trained a Q-learning agent to find optimal routes in a dynamic maze, simulating a smart taxi&apos;s navigation system. Designed reward matrices, implemented epsilon-greedy exploration, and visualized policies with heatmaps. Project reinforced my understanding of reinforcement learning in physical pathfinding scenarios.",
               link: "https://github.com/AbhinavBugudi69/Taxi-robot-Machine-learning-path-finding",
             },
             {
@@ -281,15 +281,15 @@ export default function Portfolio() {
             <motion.div
               key={index}
               className={`p-8 rounded-xl shadow-xl transition-colors duration-300 ${darkMode ? "bg-gray-800/80 hover:bg-gray-700/80" : "bg-white/90 hover:bg-gray-100/90"} border border-gray-200 dark:border-gray-700 flex flex-col justify-between`}
-              variants={projectCardVariants} // Using specific project card variants
+              variants={projectCardVariants}
               initial="offscreen"
               whileInView="onscreen"
               viewport={{ once: true, amount: 0.2 }}
-              custom={index} // Pass index for potential stagger if needed
+              custom={index}
               whileHover={{
                 scale: 1.03,
                 boxShadow: darkMode ? "0 15px 30px rgba(0, 0, 0, 0.4)" : "0 15px 30px rgba(0, 0, 0, 0.1)",
-                y: -5 // Subtle lift
+                y: -5
               }}
               transition={{ type: "spring", stiffness: 300, damping: 20 }}
             >
@@ -335,7 +335,7 @@ export default function Portfolio() {
               whileHover={{
                 scale: 1.02,
                 boxShadow: darkMode ? "0 10px 20px rgba(0, 0, 0, 0.3)" : "0 10px 20px rgba(0, 0, 0, 0.08)",
-                rotateZ: [0, 1, -1, 0] // Subtle wobble
+                rotateZ: [0, 1, -1, 0]
               }}
               transition={{ type: "spring", stiffness: 300, damping: 20 }}
             >
@@ -383,7 +383,7 @@ export default function Portfolio() {
               whileHover={{
                 scale: 1.02,
                 boxShadow: darkMode ? "0 10px 20px rgba(0, 0, 0, 0.3)" : "0 10px 20px rgba(0, 0, 0, 0.08)",
-                background: darkMode ? "linear-gradient(to right, #4B5563, #374151)" : "linear-gradient(to right, #F3F4F6, #E5E7EB)" // subtle gradient on hover
+                background: darkMode ? "linear-gradient(to right, #4B5563, #374151)" : "linear-gradient(to right, #F3F4F6, #E5E7EB)"
               }}
               transition={{ type: "spring", stiffness: 300, damping: 20 }}
             >
@@ -482,7 +482,7 @@ export default function Portfolio() {
       <section id="contact" className="container mx-auto px-6 py-20 text-center relative z-10">
         <h2 className="text-4xl font-bold mb-6 text-center text-red-500 dark:text-red-400">Contact</h2>
         <p className="text-xl text-gray-600 dark:text-gray-400 mb-8 max-w-2xl mx-auto leading-relaxed">
-          Want to collaborate, hire, or just chat about tech? I'm always open to new ideas and connections.
+          Want to collaborate, hire, or just chat about tech? I&apos;m always open to new ideas and connections.
         </p>
 
         <div className="flex flex-col items-center gap-6">
