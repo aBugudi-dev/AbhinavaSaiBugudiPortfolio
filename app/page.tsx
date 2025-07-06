@@ -231,7 +231,7 @@ export default function Portfolio() {
           <h2 className="text-4xl font-bold mb-6 text-center text-blue-500 dark:text-blue-400">About Me</h2>
           <div className="prose lg:prose-lg xl:prose-xl max-w-none dark:prose-invert">
             <p className="text-lg leading-relaxed mb-4">
-              I&apos;m a final-year <strong className="text-blue-500 dark:text-blue-300">Software Engineering student</strong> at the University of Westminster, passionate about machine learning, NLP, and applied data science. My work spans fintech, robotics, healthcare, and education &mdash; combining research-backed development with hands-on engineering.
+              I&apos;m a final-year <strong className="text-blue-500 dark:text-blue-300">Software Engineering student</strong> at the University of Westminster, passionate about machine learning, NLP, and applied data science. My work spans fintech, robotics, healthcare, and education, combining research-backed development with hands-on engineering.
             </p>
             <p className="text-lg leading-relaxed">
               I&apos;ve built end-to-end platforms, contributed to recommendation systems, and deployed scalable AI systems across web and mobile environments. Whether I&apos;m building a currency forecasting engine or solving a dynamic maze with reinforcement learning, I bring data, logic, and user empathy into everything I do.
@@ -373,7 +373,6 @@ export default function Portfolio() {
             "Microsoft Certified: Azure AI Fundamentals (AI-900)",
             "Google Cloud Professional Machine Learning Engineer",
             "DeepLearning.AI – NLP with Transformers",
-            "Coursera – Applied Data Science with Python (University of Michigan)",
             "Data Analytics & Business Intelligence – University of Westminster Summer School",
           ].map((cert, index) => (
             <motion.div
