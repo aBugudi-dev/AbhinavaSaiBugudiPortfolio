@@ -19,3 +19,98 @@ body {
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* Gradient Border Effect */
+.gradient-border {
+    position: relative;
+    isolation: isolate;
+    border-radius: 1rem; /* Match rounded-xl in Tailwind */
+    overflow: hidden; /* Important for background to respect border-radius */
+}
+
+.gradient-border::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 2px; /* Border thickness */
+    background: linear-gradient(45deg, var(--tw-gradient-from), var(--tw-gradient-via, #8b5cf6), var(--tw-gradient-to, #ec4899));
+    -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    z-index: -1; /* Puts the border behind the content */
+}
+
+/* Define custom properties for gradient in dark/light mode for consistency */
+html {
+  --tw-gradient-from: #3b82f6; /* Default (light mode) start blue */
+  --tw-gradient-via: #8b5cf6; /* Default (light mode) via purple */
+  --tw-gradient-to: #ec4899;  /* Default (light mode) end pink */
+}
+
+html.dark {
+  --tw-gradient-from: #1e3a8a; /* Darker blue for dark mode */
+  --tw-gradient-via: #6d28d9; /* Darker purple for dark mode */
+  --tw-gradient-to: #be185d;  /* Darker pink for dark mode */
+}
+
+/* Subtle Animated Diagonal Pattern */
+.animated-background-pattern {
+    background-image:
+        linear-gradient(45deg, rgba(var(--pattern-color),0.05) 25%, transparent 25%, transparent 75%, rgba(var(--pattern-color),0.05) 75%, rgba(var(--pattern-color),0.05)),
+        linear-gradient(45deg, rgba(var(--pattern-color),0.05) 25%, transparent 25%, transparent 75%, rgba(var(--pattern-color),0.05) 75%, rgba(var(--pattern-color),0.05));
+    background-size: 80px 80px; /* Adjust size as needed */
+    animation: movePattern 30s linear infinite; /* Slower, subtle animation */
+}
+
+@keyframes movePattern {
+    from { background-position: 0 0, 40px 40px; }
+    to { background-position: 80px 80px, 120px 120px; }
+}
+
+/* Define pattern color for dark/light mode */
+html { --pattern-color: 0,0,0; } /* Black for light mode */
+html.dark { --pattern-color: 255,255,255; } /* White for dark mode */
+
+/* General Card Hover Effect - pseudo element for glow */
+.project-card-hover-effect,
+.skill-card-hover-effect,
+.cert-card-hover-effect,
+.experience-card-hover-effect {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden; /* Ensures the glow stays within the card bounds */
+}
+
+.project-card-hover-effect::after,
+.skill-card-hover-effect::after,
+.cert-card-hover-effect::after,
+.experience-card-hover-effect::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: radial-gradient(circle at var(--mouse-x) var(--mouse-y), rgba(var(--glow-color), 0.3) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.3s ease-out;
+    pointer-events: none;
+    z-index: -2; /* Behind content, in front of background */
+}
+
+.project-card-hover-effect:hover::after,
+.skill-card-hover-effect:hover::after,
+.cert-card-hover-effect:hover::after,
+.experience-card-hover-effect:hover::after {
+    opacity: 1;
+}
+
+/* Define glow color for dark/light mode */
+html { --glow-color: 59,130,246; } /* Blue for light mode */
+html.dark { --glow-color: 147,197,253; } /* Lighter blue for dark mode */

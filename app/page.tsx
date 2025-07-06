@@ -8,11 +8,9 @@ export default function Portfolio() {
   const [isOpen, setIsOpen] = useState(false);
   const [cursorPos, setCursorPos] = useState({ x: 0, y: 0 });
 
-  // Use scroll for header animation
+  // Use scroll for header animation - we'll only animate Y position for nav, not hide it
   const { scrollY } = useScroll();
-  const headerHeight = useTransform(scrollY, [0, 100], [100, 0]); // Shrink header height
-  const headerOpacity = useTransform(scrollY, [0, 50], [1, 0]); // Fade out header content
-  const headerY = useSpring(useTransform(scrollY, [0, 100], [0, -100]), { stiffness: 500, damping: 50 }); // Move header up
+  const navY = useSpring(useTransform(scrollY, [0, 100], [0, -100]), { stiffness: 500, damping: 50 }); // Only animate Y to move header up slightly
 
   // Track cursor movement for subtle background effect
   useEffect(() => {
@@ -105,7 +103,7 @@ export default function Portfolio() {
 
 
   return (
-    <div className={`${darkMode ? "bg-gradient-to-br from-gray-950 to-gray-800 text-white" : "bg-gradient-to-br from-gray-50 to-gray-100 text-black"} min-h-screen font-sans antialiased relative overflow-hidden`}>
+    <div className={`${darkMode ? "bg-gradient-to-br from-gray-950 to-gray-800 text-white" : "bg-gradient-to-br from-gray-50 to-gray-100 text-black"} min-h-screen font-sans antialiased relative overflow-hidden animated-background-pattern`}>
 
       {/* Subtle Background Gradients/Shapes (Aura-like effect, follows cursor) */}
       <motion.div
@@ -118,49 +116,41 @@ export default function Portfolio() {
         }}
       />
 
-      {/* Navigation Bar (Dynamic on Scroll) */}
-      <motion.nav
-        className="fixed top-0 left-0 w-full z-50 backdrop-blur-md transition-all duration-300"
-        style={{ height: headerHeight, y: headerY }}
-      >
-        <motion.div
-          className="relative h-full flex items-center justify-start px-6"
-          style={{ opacity: headerOpacity }}
+      {/* Navigation Bar Fixed Container (Always visible for Hamburger) */}
+      <div className="fixed top-0 left-0 w-full z-50">
+        {/* Hamburger Menu Button (Always visible) */}
+        <motion.button
+          onClick={() => setIsOpen(!isOpen)}
+          className={`p-3 rounded-full transition-all shadow-lg fixed top-5 left-5 z-[51] ${ // Fixed position, high z-index
+            darkMode ? "bg-gray-800 text-white hover:bg-gray-700" : "bg-gray-200 text-black hover:bg-gray-300"
+          }`}
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
+          aria-label="Toggle navigation menu"
         >
-          {/* Hamburger Menu Button */}
-          <motion.button
-            onClick={() => setIsOpen(!isOpen)}
-            className={`p-3 rounded-full transition-all shadow-lg absolute top-1/2 -translate-y-1/2 left-5 z-[51] ${
-              darkMode ? "bg-gray-800 text-white hover:bg-gray-700" : "bg-gray-200 text-black hover:bg-gray-300"
-            }`}
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
-            aria-label="Toggle navigation menu"
-          >
-            {isOpen ? <X size={24} /> : <Menu size={24} />}
-          </motion.button>
+          {isOpen ? <X size={24} /> : <Menu size={24} />}
+        </motion.button>
 
-          {/* Dark Mode Toggle (Fixed to Top Right - separate from shrinking header content) */}
-          <motion.button
-            onClick={() => setDarkMode(!darkMode)}
-            className={`p-3 rounded-full shadow-lg transition-all fixed top-5 right-5 z-50 ${
-              darkMode ? "bg-gray-800 text-white hover:bg-gray-700" : "bg-gray-200 text-black hover:bg-gray-300"
-            }`}
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
-            aria-label="Toggle dark mode"
-          >
-            {darkMode ? <Sun size={24} /> : <Moon size={24} />}
-          </motion.button>
-        </motion.div>
+        {/* Dark Mode Toggle (Always visible) */}
+        <motion.button
+          onClick={() => setDarkMode(!darkMode)}
+          className={`p-3 rounded-full shadow-lg transition-all fixed top-5 right-5 z-50 ${ // Fixed position
+            darkMode ? "bg-gray-800 text-white hover:bg-gray-700" : "bg-gray-200 text-black hover:bg-gray-300"
+          }`}
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
+          aria-label="Toggle dark mode"
+        >
+          {darkMode ? <Sun size={24} /> : <Moon size={24} />}
+        </motion.button>
 
         {/* Expanding Navbar Overlay */}
         <AnimatePresence>
           {isOpen && (
             <motion.div
-              className={`fixed top-0 left-0 w-full shadow-xl backdrop-blur-xl transition-all duration-300 ${
+              className={`fixed top-0 left-0 w-full h-full shadow-xl backdrop-blur-xl transition-all duration-300 ${ // Full height overlay
                 darkMode ? "bg-gray-900/95 text-white" : "bg-white/90 text-black"
-              } h-full opacity-100 flex items-center justify-center p-4 md:p-0`}
+              } flex items-center justify-center p-4 md:p-0`}
               initial={{ opacity: 0, y: -100 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -100 }}
@@ -186,7 +176,7 @@ export default function Portfolio() {
             </motion.div>
           )}
         </AnimatePresence>
-      </motion.nav>
+      </div>
 
 
       {/* Home Section (Hero) */}
@@ -222,21 +212,27 @@ export default function Portfolio() {
       {/* About Me Section */}
       <section id="about-me" className="container mx-auto px-6 py-20 relative z-10">
         <motion.div
-          className={`p-8 md:p-12 rounded-xl shadow-2xl transition-colors duration-300 ${darkMode ? "bg-gray-800/80 text-white" : "bg-white/90 text-black"} border border-gray-200 dark:border-gray-700`}
+          className={`p-8 md:p-12 rounded-xl shadow-2xl transition-colors duration-300 ${darkMode ? "bg-gray-800/80 text-white" : "bg-white/90 text-black"} border border-gray-200 dark:border-gray-700 gradient-border`}
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
           <h2 className="text-4xl font-bold mb-6 text-center text-blue-500 dark:text-blue-400">About Me</h2>
-          <div className="prose lg:prose-lg xl:prose-xl max-w-none dark:prose-invert">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.5 }}
+            transition={{ delay: 0.3, duration: 0.8 }}
+            className="prose lg:prose-lg xl:prose-xl max-w-none dark:prose-invert"
+          >
             <p className="text-lg leading-relaxed mb-4">
-              I&apos;m a final-year <strong className="text-blue-500 dark:text-blue-300">Software Engineering student</strong> at the University of Westminster, passionate about machine learning, NLP, and applied data science. My work spans fintech, robotics, healthcare, and education, combining research-backed development with hands-on engineering.
+              I&apos;m a final-year <strong className="text-blue-500 dark:text-blue-300">Software Engineering student</strong> at the University of Westminster, passionate about machine learning, NLP, and applied data science. My work spans fintech, robotics, healthcare, and education &mdash; combining research-backed development with hands-on engineering.
             </p>
             <p className="text-lg leading-relaxed">
               I&apos;ve built end-to-end platforms, contributed to recommendation systems, and deployed scalable AI systems across web and mobile environments. Whether I&apos;m building a currency forecasting engine or solving a dynamic maze with reinforcement learning, I bring data, logic, and user empathy into everything I do.
             </p>
-          </div>
+          </motion.div>
         </motion.div>
       </section>
 
@@ -280,7 +276,7 @@ export default function Portfolio() {
           ].map((project, index) => (
             <motion.div
               key={index}
-              className={`p-8 rounded-xl shadow-xl transition-colors duration-300 ${darkMode ? "bg-gray-800/80 hover:bg-gray-700/80" : "bg-white/90 hover:bg-gray-100/90"} border border-gray-200 dark:border-gray-700 flex flex-col justify-between`}
+              className={`p-8 rounded-xl shadow-xl transition-colors duration-300 ${darkMode ? "bg-gray-800/80 hover:bg-gray-700/80" : "bg-white/90 hover:bg-gray-100/90"} border border-gray-200 dark:border-gray-700 project-card-hover-effect`}
               variants={projectCardVariants}
               initial="offscreen"
               whileInView="onscreen"
@@ -330,7 +326,7 @@ export default function Portfolio() {
           ].map((skill, index) => (
             <motion.div
               key={index}
-              className={`p-6 rounded-xl shadow-xl transition-colors duration-300 ${darkMode ? "bg-gray-800/80 hover:bg-gray-700/80" : "bg-white/90 hover:bg-gray-100/90"} border border-gray-200 dark:border-gray-700`}
+              className={`p-6 rounded-xl shadow-xl transition-colors duration-300 ${darkMode ? "bg-gray-800/80 hover:bg-gray-700/80" : "bg-white/90 hover:bg-gray-100/90"} border border-gray-200 dark:border-gray-700 skill-card-hover-effect`}
               variants={itemVariants}
               whileHover={{
                 scale: 1.02,
@@ -373,11 +369,12 @@ export default function Portfolio() {
             "Microsoft Certified: Azure AI Fundamentals (AI-900)",
             "Google Cloud Professional Machine Learning Engineer",
             "DeepLearning.AI – NLP with Transformers",
+            "Coursera – Applied Data Science with Python (University of Michigan)",
             "Data Analytics & Business Intelligence – University of Westminster Summer School",
           ].map((cert, index) => (
             <motion.div
               key={index}
-              className={`p-6 rounded-xl shadow-xl transition-colors duration-300 ${darkMode ? "bg-gray-800/80 hover:bg-gray-700/80" : "bg-white/90 hover:bg-gray-100/90"} border border-gray-200 dark:border-gray-700 flex items-center`}
+              className={`p-6 rounded-xl shadow-xl transition-colors duration-300 ${darkMode ? "bg-gray-800/80 hover:bg-gray-700/80" : "bg-white/90 hover:bg-gray-100/90"} border border-gray-200 dark:border-gray-700 cert-card-hover-effect`}
               variants={itemVariants}
               whileHover={{
                 scale: 1.02,
@@ -404,7 +401,7 @@ export default function Portfolio() {
           viewport={{ once: true, amount: 0.2 }}
         >
           <motion.div
-            className={`p-8 rounded-xl shadow-xl transition-colors duration-300 ${darkMode ? "bg-gray-800/80 hover:bg-gray-700/80" : "bg-white/90 hover:bg-gray-100/90"} border border-gray-200 dark:border-gray-700`}
+            className={`p-8 rounded-xl shadow-xl transition-colors duration-300 ${darkMode ? "bg-gray-800/80 hover:bg-gray-700/80" : "bg-white/90 hover:bg-gray-100/90"} border border-gray-200 dark:border-gray-700 experience-card-hover-effect`}
             variants={itemVariants}
             whileHover={{
               scale: 1.02,
@@ -430,7 +427,7 @@ export default function Portfolio() {
           </motion.div>
 
           <motion.div
-            className={`p-8 rounded-xl shadow-xl transition-colors duration-300 ${darkMode ? "bg-gray-800/80 hover:bg-gray-700/80" : "bg-white/90 hover:bg-gray-100/90"} border border-gray-200 dark:border-gray-700`}
+            className={`p-8 rounded-xl shadow-xl transition-colors duration-300 ${darkMode ? "bg-gray-800/80 hover:bg-gray-700/80" : "bg-white/90 hover:bg-gray-100/90"} border border-gray-200 dark:border-gray-700 experience-card-hover-effect`}
             variants={itemVariants}
             whileHover={{
               scale: 1.02,
@@ -453,7 +450,7 @@ export default function Portfolio() {
           </motion.div>
 
           <motion.div
-            className={`p-8 rounded-xl shadow-xl transition-colors duration-300 ${darkMode ? "bg-gray-800/80 hover:bg-gray-700/80" : "bg-white/90 hover:bg-gray-100/90"} border border-gray-200 dark:border-gray-700`}
+            className={`p-8 rounded-xl shadow-xl transition-colors duration-300 ${darkMode ? "bg-gray-800/80 hover:bg-gray-700/80" : "bg-white/90 hover:bg-gray-100/90"} border border-gray-200 dark:border-gray-700 experience-card-hover-effect`}
             variants={itemVariants}
             whileHover={{
               scale: 1.02,
@@ -487,7 +484,7 @@ export default function Portfolio() {
         <div className="flex flex-col items-center gap-6">
           <motion.a
             href="mailto:abhinavasaibugudi04@gmail.com"
-            className="px-8 py-4 bg-gradient-to-r from-red-600 to-red-800 text-white font-semibold rounded-full shadow-lg flex items-center justify-center gap-3 hover:from-red-700 hover:to-red-900 transition-all text-xl group"
+            className="px-8 py-4 bg-gradient-to-r from-red-600 to-red-800 text-white font-semibold rounded-full shadow-lg flex items-center justify-center gap-3 hover:from-red-700 hover:to-red-900 transition-all text-xl group contact-button-hover-effect"
             whileHover={{ scale: 1.05, boxShadow: "0 10px 20px rgba(220, 38, 38, 0.3)", y: -3 }}
             whileTap={{ scale: 0.95 }}
           >
@@ -496,7 +493,7 @@ export default function Portfolio() {
 
           <div className="flex justify-center gap-6 mt-4">
             <motion.a href="https://www.linkedin.com/in/bugudi-abhinava-sai/" target="_blank" rel="noopener noreferrer"
-              className="p-4 rounded-full transition-all bg-blue-600 text-white hover:bg-blue-500 shadow-md transform hover:scale-115"
+              className="p-4 rounded-full transition-all bg-blue-600 text-white hover:bg-blue-500 shadow-md transform hover:scale-115 social-icon-hover-effect"
               whileHover={{ scale: 1.15, boxShadow: "0 8px 16px rgba(59, 130, 246, 0.4)", rotate: 5 }}
               whileTap={{ scale: 0.9 }}
               aria-label="LinkedIn profile"
@@ -504,7 +501,7 @@ export default function Portfolio() {
               <Linkedin size={32} />
             </motion.a>
             <motion.a href="https://github.com/AbhinavBugudi69?tab=repositories" target="_blank" rel="noopener noreferrer"
-              className="p-4 rounded-full transition-all bg-gray-800 text-white hover:bg-gray-700 shadow-md transform hover:scale-115"
+              className="p-4 rounded-full transition-all bg-gray-800 text-white hover:bg-gray-700 shadow-md transform hover:scale-115 social-icon-hover-effect"
               whileHover={{ scale: 1.15, boxShadow: "0 8px 16px rgba(0, 0, 0, 0.4)", rotate: -5 }}
               whileTap={{ scale: 0.9 }}
               aria-label="GitHub repositories"
@@ -518,7 +515,7 @@ export default function Portfolio() {
         <motion.a
           href="/resume.pdf"
           download="Abhinava_Bugudi_Resume.pdf"
-          className="mt-12 inline-flex items-center px-8 py-4 bg-gradient-to-r from-purple-600 to-indigo-700 text-white font-semibold rounded-full shadow-lg gap-3 hover:from-purple-700 hover:to-indigo-800 transition-all text-xl group"
+          className="mt-12 inline-flex items-center px-8 py-4 bg-gradient-to-r from-purple-600 to-indigo-700 text-white font-semibold rounded-full shadow-lg gap-3 hover:from-purple-700 hover:to-indigo-800 transition-all text-xl group contact-button-hover-effect"
           whileHover={{ scale: 1.05, boxShadow: "0 10px 20px rgba(124, 58, 237, 0.3)", y: -3 }}
           whileTap={{ scale: 0.95 }}
         >
