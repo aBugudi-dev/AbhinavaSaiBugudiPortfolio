@@ -500,7 +500,7 @@ export default function Portfolio() {
             >
               <Linkedin size={32} />
             </motion.a>
-            <motion.a href="https://github.com/AbhinavBugudi69?tab=repositories" target="_blank" rel="noopener noreferrer"
+            <motion.a href="https://github.com/aBugudi-dev" target="_blank" rel="noopener noreferrer"
               className="p-4 rounded-full transition-all bg-gray-800 text-white hover:bg-gray-700 shadow-md transform hover:scale-115 social-icon-hover-effect"
               whileHover={{ scale: 1.15, boxShadow: "0 8px 16px rgba(0, 0, 0, 0.4)", rotate: -5 }}
               whileTap={{ scale: 0.9 }}
