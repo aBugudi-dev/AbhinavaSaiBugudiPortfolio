@@ -253,13 +253,13 @@ export default function Portfolio() {
               name: "VolvoxForex.online – AI-Powered Currency Forecasting Platform",
               role: "Founder & Full Stack Developer",
               desc: "Developed a deep learning model using LSTM to predict forex movements based on real-time economic indicators and past trends. Incorporated news sentiment using VADER, and used feature engineering to align lagged macro variables with target currencies. Built the full-stack platform using Flask (backend) and React (frontend), and deployed forecasts and volatility charts live. Used previous trading simulations and forex strategy insights to guide feature selection and model tuning.",
-              link: "https://github.com/AbhinavBugudi69/VolvoxForex.online",
+              link: "https://github.com/aBugudi-dev/VolvoxForex.online",
             },
             {
               name: "Maze Taxi Pathfinder – Q-Learning Robotics Project",
               role: "Academic Project",
               desc: "Trained a Q-learning agent to find optimal routes in a dynamic maze, simulating a smart taxi&apos;s navigation system. Designed reward matrices, implemented epsilon-greedy exploration, and visualized policies with heatmaps. Project reinforced my understanding of reinforcement learning in physical pathfinding scenarios.",
-              link: "https://github.com/AbhinavBugudi69/Taxi-robot-Machine-learning-path-finding",
+              link: "https://github.com/aBugudi-dev/Taxi-robot-Machine-learning-path-finding",
             },
             {
               name: "BuzNear – AI Intern for India-Based E-commerce Platform",
@@ -271,7 +271,7 @@ export default function Portfolio() {
               name: "Voxscribe – Handwriting Recognition Note-Taking App",
               role: "Final Year Project",
               desc: "Built a CRNN-CTC model to transcribe handwritten notes using the EMNIST dataset. Integrated into an Android app using a live TFLite-powered API. Supported live letter-by-letter recognition and formatting tools. Focused on speed, reliability, and accessibility for students and professionals alike.",
-              link: "https://github.com/AbhinavBugudi69/Voxscribe",
+              link: "https://github.com/aBugudi-dev/Voxscribe",
             },
           ].map((project, index) => (
             <motion.div
@@ -318,7 +318,7 @@ export default function Portfolio() {
           viewport={{ once: true, amount: 0.2 }}
         >
           {[
-            { category: "Languages", items: ["Python", "Java", "JavaScript", "SQL"] },
+            { category: "Languages", items: ["Python", "Java", "JavaScript", "SQL", "R"] },
             { category: "ML/AI", items: ["TensorFlow", "PyTorch", "Scikit-learn", "NLP", "Transformers", "Reinforcement Learning", "Recommender Systems"] },
             { category: "Tools & Frameworks", items: ["Flask", "React", "HuggingFace", "OpenCV", "FastAPI", "LangChain", "Git", "Docker"] },
             { category: "Cloud", items: ["Azure AI", "Render", "BigQuery"] },
