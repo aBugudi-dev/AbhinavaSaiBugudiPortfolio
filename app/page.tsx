@@ -117,7 +117,7 @@ export default function Portfolio() {
       />
 
       {/* Navigation Bar Fixed Container (Always visible for Hamburger) */}
-      <div className="fixed top-0 left-0 w-full z-50">
+      <motion.div style={{ y: navY }} className="fixed top-0 left-0 w-full z-50">
         {/* Hamburger Menu Button (Always visible) */}
         <motion.button
           onClick={() => setIsOpen(!isOpen)}
@@ -176,7 +176,7 @@ export default function Portfolio() {
             </motion.div>
           )}
         </AnimatePresence>
-      </div>
+      </motion.div>
 
 
       {/* Home Section (Hero) */}
@@ -253,7 +253,7 @@ export default function Portfolio() {
               name: "VolvoxForex.online – AI-Powered Currency Forecasting Platform",
               role: "Founder & Full Stack Developer",
               desc: "Developed a deep learning model using LSTM to predict forex movements based on real-time economic indicators and past trends. Incorporated news sentiment using VADER, and used feature engineering to align lagged macro variables with target currencies. Built the full-stack platform using Flask (backend) and React (frontend), and deployed forecasts and volatility charts live. Used previous trading simulations and forex strategy insights to guide feature selection and model tuning.",
-              link: "https://github.com/aBugudi-dev/VolvoxForex.online",
+              link: "https://github.com/aBugudi-devz/VolvoxForex.online",
             },
             {
               name: "Maze Taxi Pathfinder – Q-Learning Robotics Project",
