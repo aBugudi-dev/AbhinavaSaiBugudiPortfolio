@@ -105,7 +105,7 @@ export default function Portfolio() {
         "Translated model outputs into **actionable trading strategy recommendations** and built a **React dashboard** for visualization and analysis.",
         "Engineered the underlying **AWS data pipeline** (Lambda, S3) to ingest and process over **2GB** of data daily."
       ],
-      link: "https://github.com/aBugudi-dev/VolvoxForex.online",
+      link: "https://volvoxforex.online/",
     },
     {
       name: "BuzNear – Customer Analytics & Experimentation",
@@ -116,7 +116,7 @@ export default function Portfolio() {
         "Designed and analyzed an **A/B test** that validated a **15% CTR uplift**, demonstrating direct business impact.",
         "Wrote complex **SQL queries** for data extraction and created **Power BI dashboards** to communicate findings to stakeholders."
       ],
-      link: null,
+      link: "https://sanspro.com/",
     },
     {
       name: "Voxscribe – Computer Vision (Deep Learning)",
@@ -270,7 +270,7 @@ const experiences = [
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.2, ease: "easeOut" }}
         >
-          Data Scientist | Turning Complex Data into Actionable Insights and Business Impact.
+          Data Scientist & Machine Learning Engineer
         </motion.h2>
         <motion.p
           className="mt-4 text-lg md:text-xl max-w-3xl leading-relaxed text-gray-600 dark:text-gray-400"
@@ -278,7 +278,9 @@ const experiences = [
           animate={{ opacity: 1 }}
           transition={{ duration: 1.5, delay: 0.4, ease: "easeOut" }}
         >
-          I specialize in the end-to-end data science lifecycle. From conducting deep exploratory analysis and building predictive models to communicating findings through powerful visualizations, my passion is using a scientific, methodical approach to solve real-world business problems.
+          Specializing in predictive modeling, time-series forecasting, NLP, and
+          cloud-based data pipelines. I turn raw datasets into actionable
+          insights and production-ready solutions.
         </motion.p>
       </section>
 
@@ -304,10 +306,7 @@ const experiences = [
             className="prose lg:prose-lg xl:prose-xl max-w-none dark:prose-invert"
           >
             <p className="text-lg leading-relaxed text-left">
-              I believe the most valuable insights come from a deep curiosity combined with rigorous technical execution. My background as a software engineer provides the technical foundation to not only analyze data but also to build the robust systems required for scalable modeling and experimentation.
-            </p>
-            <p className="text-lg leading-relaxed text-left">
-              This approach has driven my work, whether it was building a forecasting model with 85% accuracy to provide actionable trading insights, or using statistical analysis and A/B testing to drive a 15% CTR uplift for an e-commerce platform. I am a proactive problem-solver and a lifelong learner, always seeking the next complex dataset to explore.
+               I’m a Data Scientist with a strong foundation in software engineering and hands-on expertise in predictive modeling, time-series forecasting, and NLP. My projects range from achieving 85% accuracy in live FX forecasting to driving a 15% uplift in e-commerce CTR through machine learning experimentation. With experience in cloud-native pipelines, BI dashboards, and full-stack development, I bridge the gap between advanced analytics and real-world business impact.
             </p>
           </motion.div>
         </motion.div>
@@ -527,8 +526,8 @@ const experiences = [
 
         {/* Resume Download Button */}
         <motion.a
-          href="/Abhinava_Bugudi_Resume.pdf"
-          download="Abhinava_Bugudi_Resume.pdf"
+          href="/AbhinavaSaiBugudi_Resume.pdf"
+          download="AbhinavaSaiBugudi_Resume.pdf"
           className="mt-12 inline-flex items-center px-8 py-4 bg-gradient-to-r from-purple-600 to-indigo-700 text-white font-semibold rounded-full shadow-lg gap-3 hover:from-purple-700 hover:to-indigo-800 transition-all text-xl group contact-button-hover-effect"
           whileHover={{ scale: 1.05, boxShadow: "0 10px 20px rgba(124, 58, 237, 0.3)", y: -3 }}
           whileTap={{ scale: 0.95 }}
