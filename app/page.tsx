@@ -377,11 +377,11 @@ const experiences = [
             viewport={{ once: true, amount: 0.2 }}
         >
           {[
-            { category: "Languages", items: ["Python", "Java", "JavaScript", "SQL", "R"] },
+            { category: "Languages", items: ["Python", "Java", "JavaScript", "R", "T-SQL (Stored Procedures, Views, Triggers, Query Optimisation)"] },
             { category: "ML/AI", items: ["TensorFlow", "PyTorch", "Scikit-learn", "NLP", "Transformers", "Reinforcement Learning", "Recommender Systems"] },
-            { category: "Tools & Frameworks", items: ["Flask", "React", "HuggingFace", "OpenCV", "FastAPI", "LangChain", "Git", "Docker"] },
-            { category: "Cloud", items: ["Azure AI", "Render", "BigQuery", "AWS"] },
-            { category: "Dev & Data", items: ["ETL pipelines", "Pandas", "NumPy", "CI/CD", "SQL Server"] },
+            { category: "Tools & Frameworks", items: ["Flask", "React", "FastAPI", "HuggingFace", "OpenCV", "LangChain", "Git", "Docker"] },
+            { category: "Cloud", items: ["Azure AI", "AWS", "BigQuery", "Render"] },
+            { category: "Data & Systems", items: ["Microsoft SQL Server (SSMS, SSIS, SSRS)", "Database Administration", "Performance Tuning", "Backup & Recovery", "ETL Pipelines", "Pandas", "NumPy", "CI/CD"] },
           ].map((skill, index) => (
             <motion.div
               key={index}
@@ -411,6 +411,8 @@ const experiences = [
           ))}
         </motion.div>
       </section>
+
+
 
       {/* --- Separator --- */}
       <div className="w-1/2 mx-auto border-t border-gray-300 dark:border-gray-700 my-10"></div>
