@@ -8,9 +8,6 @@ export default function Portfolio() {
   const [isOpen, setIsOpen] = useState(false);
   const [cursorPos, setCursorPos] = useState({ x: 0, y: 0 });
 
-  const { scrollY } = useScroll();
-  const navY = useSpring(useTransform(scrollY, [0, 100], [0, -50]), { stiffness: 500, damping: 50 });
-
   useEffect(() => {
     const updateCursor = (e: MouseEvent) => {
       setCursorPos({ x: e.clientX, y: e.clientY });
@@ -192,10 +189,7 @@ const experiences = [
       />
 
       {/* Navigation Bar Fixed Container */}
-      <motion.div 
-        style={{ opacity: useSpring(useTransform(scrollY, [0, 100], [1, 0.85]), { stiffness: 200, damping: 30 }) }} 
-        className="fixed top-0 left-0 w-full z-50"
-      >
+      <motion.div className="fixed top-0 left-0 w-full z-50">
         {/* Hamburger Menu Button */}
         <motion.button
           onClick={() => setIsOpen(!isOpen)}
