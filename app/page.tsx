@@ -1,6 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import { motion, AnimatePresence, useScroll, useSpring, useTransform } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { Sun, Moon, Github, Linkedin, Mail, Menu, X, Download, ArrowUpRight } from "lucide-react";
 
 export default function Portfolio() {
