@@ -192,12 +192,17 @@ const experiences = [
       />
 
       {/* Navigation Bar Fixed Container */}
-      <motion.div style={{ y: navY }} className="fixed top-0 left-0 w-full z-50">
+      <motion.div 
+        style={{ opacity: useSpring(useTransform(scrollY, [0, 100], [1, 0.85]), { stiffness: 200, damping: 30 }) }} 
+        className="fixed top-0 left-0 w-full z-50"
+      >
         {/* Hamburger Menu Button */}
         <motion.button
           onClick={() => setIsOpen(!isOpen)}
-          className={`p-3 rounded-full transition-all shadow-lg fixed top-5 left-5 z-[51] ${
-            darkMode ? "bg-gray-800 text-white hover:bg-gray-700" : "bg-gray-200 text-black hover:bg-gray-300"
+          className={`p-3 rounded-full transition-all shadow-lg fixed top-5 left-5 z-[100] ${
+            darkMode 
+              ? "bg-gray-800 text-white hover:bg-gray-700" 
+              : "bg-gray-200 text-black hover:bg-gray-300"
           }`}
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
@@ -209,8 +214,10 @@ const experiences = [
         {/* Dark Mode Toggle */}
         <motion.button
           onClick={() => setDarkMode(!darkMode)}
-          className={`p-3 rounded-full shadow-lg transition-all fixed top-5 right-5 z-50 ${
-            darkMode ? "bg-gray-800 text-white hover:bg-gray-700" : "bg-gray-200 text-black hover:bg-gray-300"
+          className={`p-3 rounded-full shadow-lg transition-all fixed top-5 right-5 z-[100] ${
+            darkMode 
+              ? "bg-gray-800 text-white hover:bg-gray-700" 
+              : "bg-gray-200 text-black hover:bg-gray-300"
           }`}
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
@@ -225,22 +232,23 @@ const experiences = [
             <motion.div
               className={`fixed top-0 left-0 w-full h-full shadow-xl backdrop-blur-xl transition-all duration-300 ${
                 darkMode ? "bg-gray-900/95 text-white" : "bg-white/90 text-black"
-              } flex items-center justify-center p-4 md:p-0`}
+              } flex items-center justify-center p-6 overflow-y-auto z-[90]`}
               initial={{ opacity: 0, y: -100 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -100 }}
               transition={{ duration: 0.3, ease: "easeOut" }}
             >
-              <ul className="flex flex-col md:flex-row justify-center items-center space-y-4 md:space-y-0 space-x-0 md:space-x-8 text-xl md:text-lg">
+              <ul className="flex flex-col md:flex-row justify-center items-center space-y-6 md:space-y-0 md:space-x-10 text-2xl md:text-lg font-medium">
                 {sectionNames.map((item) => (
-                  <motion.li key={item}
+                  <motion.li
+                    key={item}
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: sectionNames.indexOf(item) * 0.05 }}
                   >
                     <button
                       onClick={() => scrollToSection(item)}
-                      className="relative group font-medium text-lg md:text-xl px-3 py-2 rounded-lg transition-all duration-300 hover:text-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75"
+                      className="relative group px-4 py-2 rounded-lg transition-all duration-300 hover:text-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75"
                     >
                       {item}
                       <span className="absolute bottom-0 left-0 w-full h-0.5 bg-blue-400 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-out"></span>
@@ -251,7 +259,9 @@ const experiences = [
             </motion.div>
           )}
         </AnimatePresence>
+
       </motion.div>
+
 
 
       {/* Home Section (Hero) */}
@@ -327,38 +337,77 @@ const experiences = [
           viewport={{ once: true, amount: 0.2 }}
         >
           {projects.map((project, index) => (
-            <motion.div
-              key={index}
-              className={`p-8 rounded-xl shadow-xl transition-colors duration-300 ${darkMode ? "bg-gray-800/80 hover:bg-gray-700/80" : "bg-white/90 hover:bg-gray-100/90"} border border-gray-200 dark:border-gray-700 project-card-hover-effect flex flex-col`}
-              variants={cardVariants}
-              initial="offscreen"
-              whileInView="onscreen"
-              viewport={{ once: true, amount: 0.2 }}
-              custom={index}
-              whileHover={{
-                scale: 1.03,
-                boxShadow: darkMode ? "0 15px 30px rgba(0, 0, 0, 0.4)" : "0 15px 30px rgba(0, 0, 0, 0.1)",
-                y: -5
-              }}
-              transition={{ type: "spring", stiffness: 300, damping: 20 }}
-            >
-              <div className="flex-grow">
-                <h3 className="text-2xl font-bold mb-2 text-purple-600 dark:text-purple-400 leading-tight">{project.name}</h3>
-                <p className="text-sm font-semibold mb-4 text-gray-500 dark:text-gray-400">{project.role}</p>
-                <ul className="list-disc pl-5 space-y-2 text-md leading-relaxed mb-4 text-left">
-                    {project.description.map((point, i) => (
-                        <li key={i} dangerouslySetInnerHTML={{ __html: point.replace(/\*\*(.*?)\*\*/g, '<strong class="text-blue-400 dark:text-blue-300 font-semibold">$1</strong>') }} />
-                    ))}
-                </ul>
-              </div>
-              {project.link && (
-                <a href={project.link} target="_blank" rel="noopener noreferrer" className="mt-auto inline-flex items-center gap-2 text-blue-500 hover:underline font-medium group text-lg self-start">
-                  Explore Project
-                  <ArrowUpRight size={20} className="transform transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
+          <motion.div
+            key={index}
+            className={`p-8 rounded-xl shadow-xl transition-colors duration-300 ${
+              darkMode ? "bg-gray-800/80 hover:bg-gray-700/80" : "bg-white/90 hover:bg-gray-100/90"
+            } border border-gray-200 dark:border-gray-700 project-card-hover-effect flex flex-col`}
+            variants={cardVariants}
+            initial="offscreen"
+            whileInView="onscreen"
+            viewport={{ once: true, amount: 0.2 }}
+            custom={index}
+            whileHover={{
+              scale: 1.03,
+              boxShadow: darkMode
+                ? "0 15px 30px rgba(0, 0, 0, 0.4)"
+                : "0 15px 30px rgba(0, 0, 0, 0.1)",
+              y: -5
+            }}
+            transition={{ type: "spring", stiffness: 300, damping: 20 }}
+          >
+            <div className="flex-grow">
+              <h3 className="text-2xl font-bold mb-2 text-purple-600 dark:text-purple-400 leading-tight">
+                {project.name}
+              </h3>
+              <p className="text-sm font-semibold mb-4 text-gray-500 dark:text-gray-400">
+                {project.role}
+              </p>
+              <ul className="list-disc pl-5 space-y-2 text-md leading-relaxed mb-4 text-left">
+                {project.description.map((point, i) => (
+                  <li
+                    key={i}
+                    dangerouslySetInnerHTML={{
+                      __html: point.replace(
+                        /\*\*(.*?)\*\*/g,
+                        '<strong class="text-blue-400 dark:text-blue-300 font-semibold">$1</strong>'
+                      )
+                    }}
+                  />
+                ))}
+              </ul>
+            </div>
+
+            {/* Customise link display */}
+            {project.link && (
+              project.name.includes("VolvoxForex") || project.name.includes("BuzNear") ? (
+                <a
+                  href={project.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-auto text-blue-500 hover:underline font-medium break-all"
+                >
+                  {project.link}
                 </a>
-              )}
-            </motion.div>
-          ))}
+              ) : (
+                <a
+                  href={project.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-auto inline-flex items-center gap-2 text-blue-500 hover:underline font-medium group text-lg self-start"
+                >
+                  Explore Project
+                  <ArrowUpRight
+                    size={20}
+                    className="transform transition-transform group-hover:translate-x-1 group-hover:-translate-y-1"
+                  />
+                </a>
+              )
+            )}
+          </motion.div>
+        ))}
+
+
         </motion.div>
       </section>
 
@@ -390,7 +439,7 @@ const experiences = [
               category: "SQL / T-SQL",
               items: [
                 "Core: Stored Procedures, Views, Triggers, Query Optimisation",
-                "SQL Server Ecosystem: MSSQL, SSMS, SSIS (ETL), SSRS (Reporting)",
+                "SQL Server Ecosystem: MSSQL, SSMS, SSIS , SSRS",
                 "HA/DR: Log Shipping, Replication, Mirroring, Backup/Restore strategies",
                 "Use cases: DBA tasks, migrations, performance tuning, data integrity checks"
               ]
