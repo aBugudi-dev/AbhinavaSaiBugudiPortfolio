@@ -370,34 +370,91 @@ const experiences = [
       <section id="skills" className="container mx-auto px-6 py-20 relative z-10">
         <h2 className="text-4xl font-bold mb-10 text-center text-green-500 dark:text-green-400">Skills</h2>
         <motion.div
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, amount: 0.2 }}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.2 }}
         >
           {[
-            { category: "Languages", items: ["Python", "Java", "JavaScript", "R", "T-SQL (Stored Procedures, Views, Triggers, Query Optimisation)"] },
-            { category: "ML/AI", items: ["TensorFlow", "PyTorch", "Scikit-learn", "NLP", "Transformers", "Reinforcement Learning", "Recommender Systems"] },
-            { category: "Tools & Frameworks", items: ["Flask", "React", "FastAPI", "HuggingFace", "OpenCV", "LangChain", "Git", "Docker"] },
-            { category: "Cloud", items: ["Azure AI", "AWS", "BigQuery", "Render"] },
-            { category: "Data & Systems", items: ["Microsoft SQL Server (SSMS, SSIS, SSRS)", "Database Administration", "Performance Tuning", "Backup & Recovery", "ETL Pipelines", "Pandas", "NumPy", "CI/CD"] },
+            {
+              category: "Python",
+              items: [
+                "Core: Data structures, OOP, scripting",
+                "Frameworks: Flask, FastAPI, Scikit-learn, TensorFlow, PyTorch",
+                "Use cases: APIs, ML models (NLP, CV), ETL pipelines",
+                "Environment: Conda, Jupyter, Docker, Git"
+              ]
+            },
+            {
+              category: "SQL / T-SQL",
+              items: [
+                "Core: Stored Procedures, Views, Triggers, Query Optimisation",
+                "SQL Server Ecosystem: MSSQL, SSMS, SSIS (ETL), SSRS (Reporting)",
+                "HA/DR: Log Shipping, Replication, Mirroring, Backup/Restore strategies",
+                "Use cases: DBA tasks, migrations, performance tuning, data integrity checks"
+              ]
+            },
+            {
+              category: "Java",
+              items: [
+                "Core: OOP, multithreading, concurrency",
+                "Frameworks: Spring Boot basics, JDBC",
+                "Use cases: Concurrent systems (queues, scheduling), coursework projects",
+                "Environment: IntelliJ, Maven, Git"
+              ]
+            },
+            {
+              category: "JavaScript",
+              items: [
+                "Core: ES6+, DOM, async programming",
+                "Frameworks: React, Chart.js, Tailwind CSS",
+                "Use cases: Portfolio UI, dashboards, interactive data viz",
+                "Environment: Node.js, npm, GitHub"
+              ]
+            },
+            {
+              category: "R",
+              items: [
+                "Core: Statistical modelling, data manipulation",
+                "Libraries: ggplot2, dplyr, caret",
+                "Use cases: Hypothesis testing, data analysis coursework",
+                "Environment: RStudio, Jupyter"
+              ]
+            },
+            {
+              category: "Cloud & DevOps",
+              items: [
+                "Azure: AI services, Data Factory, basic DevOps pipelines",
+                "AWS: Lambda, S3, EC2",
+                "GCP: BigQuery",
+                "Tools: Docker, GitHub Actions (CI/CD)"
+              ]
+            }
           ].map((skill, index) => (
             <motion.div
               key={index}
-              className={`p-6 rounded-xl shadow-xl transition-colors duration-300 ${darkMode ? "bg-gray-800/80 hover:bg-gray-700/80" : "bg-white/90 hover:bg-gray-100/90"} border border-gray-200 dark:border-gray-700 skill-card-hover-effect`}
+              className={`p-6 rounded-xl shadow-xl transition-colors duration-300 ${
+                darkMode ? "bg-gray-800/80 hover:bg-gray-700/80" : "bg-white/90 hover:bg-gray-100/90"
+              } border border-gray-200 dark:border-gray-700 skill-card-hover-effect`}
               variants={itemVariants}
               whileHover={{
                 scale: 1.02,
-                boxShadow: darkMode ? "0 10px 20px rgba(0, 0, 0, 0.3)" : "0 10px 20px rgba(0, 0, 0, 0.08)",
+                boxShadow: darkMode
+                  ? "0 10px 20px rgba(0, 0, 0, 0.3)"
+                  : "0 10px 20px rgba(0, 0, 0, 0.08)",
                 rotateZ: [0, 1, -1, 0]
               }}
               transition={{ type: "spring", stiffness: 300, damping: 20 }}
             >
-              <h3 className="text-xl font-bold mb-4 text-center border-b pb-2 border-gray-300 dark:border-gray-600 text-green-400">{skill.category}</h3>
+              <h3 className="text-xl font-bold mb-4 text-center border-b pb-2 border-gray-300 dark:border-gray-600 text-green-400">
+                {skill.category}
+              </h3>
               <ul className="list-inside space-y-2 text-md">
                 {skill.items.map((item, idx) => (
-                  <motion.li key={idx} className="flex items-center"
+                  <motion.li
+                    key={idx}
+                    className="flex items-center"
                     initial={{ opacity: 0, x: -10 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true, amount: 0.1 }}
@@ -411,6 +468,7 @@ const experiences = [
           ))}
         </motion.div>
       </section>
+
 
 
 
