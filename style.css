@@ -532,9 +532,10 @@ img {
   gap: 22px;
   padding: 8px 12px;
   white-space: nowrap;
-  animation: marquee-right 22s linear infinite;
+  animation: marquee-left 22s linear infinite;
   transform: rotate(1.2deg);
-  min-width: 100%;
+  width: max-content;
+  flex: 0 0 auto;
   flex-shrink: 0;
   will-change: transform;
 }
@@ -781,12 +782,12 @@ img {
   }
 }
 
-@keyframes marquee-right {
+@keyframes marquee-left {
   0% {
-    transform: translateX(-100%);
+    transform: translateX(0);
   }
   100% {
-    transform: translateX(0);
+    transform: translateX(-100%);
   }
 }
 
